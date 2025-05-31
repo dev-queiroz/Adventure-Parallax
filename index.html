@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Web Design Mastery | Adventure Parallax</title>
+  </head>
+  <body>
+    <div class="parallax__container">
+      <img src="assets/bg-1.jpg" alt="parallax" />
+      <img id="bg-2" src="assets/bg-2.png" alt="parallax" />
+      <h1 id="title">Adventure</h1>
+      <img id="bg-3" src="assets/bg-3.png" alt="parallax" />
+    </div>
+    <section class="about">
+      <div class="image__gallary">
+        <div class="image__card" id="image__card-1">
+          <img src="assets/grid-1.jpg" alt="grid" />
+        </div>
+        <div class="image__card" id="image__card-2">
+          <img src="assets/grid-2.jpg" alt="grid" />
+        </div>
+        <div class="image__card" id="image__card-3">
+          <img src="assets/grid-3.jpg" alt="grid" />
+        </div>
+        <div class="image__card" id="image__card-4">
+          <img src="assets/grid-4.jpg" alt="grid" />
+        </div>
+      </div>
+      <div class="details">
+        Snowboarding is a winter sport that involves riding a snowboard down a
+        snow-covered slope or terrain. The rider stands on the snowboard with
+        both feet attached to bindings and slides down the slope, making turns
+        and performing tricks along the way.
+      </div>
+      <div class="footer__btn">
+        <button class="learn__more">Learn More</button>
+      </div>
+    </section>
+
+    <script>
+      var title = document.getElementById("title");
+      var bg_2 = document.getElementById("bg-2");
+      var bg_3 = document.getElementById("bg-3");
+
+      var image_card_1 = document.getElementById("image__card-1");
+      var image_card_2 = document.getElementById("image__card-2");
+      var image_card_3 = document.getElementById("image__card-3");
+      var image_card_4 = document.getElementById("image__card-4");
+
+      document.addEventListener("scroll", (event) => {
+        var positionY = window.scrollY;
+
+        title.style.fontSize = `${100 + positionY * 0.5}px`;
+
+        bg_2.style.top = `-${positionY * 0.5}px`;
+        bg_3.style.top = `-${positionY}px`;
+        bg_3.style.scale = 1 + positionY * 0.001;
+
+        image_card_1.style.transform = `translateY(${
+          positionY * -0.5 + 400
+        }px)`;
+
+        image_card_2.style.transform = `translateY(${positionY * 0.1 + -50}px)`;
+
+        image_card_3.style.transform = `translateY(${
+          positionY * -0.1 + 100
+        }px)`;
+
+        image_card_4.style.transform = `translateY(${
+          positionY * 0.2 + -125
+        }px)`;
+
+        var _newOpacity = positionY * 0.001;
+        if (_newOpacity >= 0 && _newOpacity <= 1) {
+          image_card_1.style.opacity = _newOpacity;
+          image_card_2.style.opacity = _newOpacity;
+          image_card_3.style.opacity = _newOpacity;
+          image_card_4.style.opacity = _newOpacity;
+        }
+      });
+    </script>
+  </body>
+</html>
